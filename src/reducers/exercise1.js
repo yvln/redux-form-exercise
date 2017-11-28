@@ -14,7 +14,7 @@ const exerciseOneFormSubmit = (state, payload) => {
     };
     return Object.assign({}, state, {
         numberSubmitted: payload.number,
-        frenchNumber: translation[payload.number],
+        frenchNumber: translation[parseInt(payload.number)],
     });
 };
 

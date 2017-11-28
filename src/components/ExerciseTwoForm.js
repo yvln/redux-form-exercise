@@ -2,7 +2,7 @@
 
 import React, { PropTypes } from 'react';
 import { Field } from 'redux-form';
-import InputField from './Form/InputField';
+import InputFieldAwesome from './Form/InputFieldAwesome';
 import CheckboxField from './Form/CheckboxField';
 
 const propTypes = {
@@ -48,8 +48,9 @@ const ExerciseTwoForm = ({ handleSubmit, submitSucceeded, ticked, name }) => (
                         <Field
                             name="name"
                             type="text"
-                            component={InputField}
+                            component={InputFieldAwesome}
                             label="Your name:"
+                            parse={(value, name) => value.substring(7)}
                         />
                     </div>
                     <div style={{ marginBottom: '10px' }}>
@@ -67,7 +68,7 @@ const ExerciseTwoForm = ({ handleSubmit, submitSucceeded, ticked, name }) => (
         {submitSucceeded && (
             <div style={{ marginLeft: '10px', marginTop: '10px', color: 'green' }}>
                 {ticked ?
-                    `Congrats ${name || 'Unnamed'}, you just ticked the box for that exercise! (PUN INTENDED)`
+                    `Congrats ${name || 'Unnamed'}awesome, you just ticked the box for that exercise! (PUN INTENDED)`
                     :
                     `Come on ${name || 'Unnamed'}... tick that box...`
                 }

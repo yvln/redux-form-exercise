@@ -1,9 +1,16 @@
-// TODO: Exercise 3 Modify me
+import React, { PropTypes } from 'react';
+import { Field } from 'redux-form';
+import InputField from './Form/InputField';
+import TextareaField from './Form/TextareaField';
 
-import React from 'react';
+const propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  submitSucceeded: PropTypes.bool.isRequired,
+  name: PropTypes.string,
+  textarea: PropTypes.string,
+};
 
-
-const ExerciseThreeForm = () => (
+const ExerciseThreeForm = ({ handleSubmit, submitSucceeded, name, textarea }) => (
     <div>
         <div>
             <h3>Exercise 3</h3>
@@ -24,10 +31,36 @@ const ExerciseThreeForm = () => (
             <p>
                 TODO: Implement me in actions, reducers, containers, /components/Form/TextareaField.js &amp; modify /components/ExerciseThreeForm.js
             </p>
+            <form onSubmit={handleSubmit}>
+                <fieldset>
+                    <legend>Exercise 3</legend>
+                    <div>
+                        <div style={{ marginBottom: '10px' }}>
+                            <Field
+                                name="name"
+                                type="text"
+                                component={InputField}
+                                label="Your name:"
+                            />
+                        </div>
+                        <div style={{ marginBottom: '10px' }}>
+                            <Field
+                                name="textarea"
+                                type="textarea"
+                                component={TextareaField}
+                                label="Your text:"
+                            />
+                        </div>
+                    </div>
+                    <button type="submit">Submit</button>
+                </fieldset>
+            </form>
+            {submitSucceeded && (
+                <div style={{ marginLeft: '10px', marginTop: '10px', color: 'green' }}>
+                  {name} has written this: {textarea}.
+                </div>
+            )}
         </div>
-        {
-            // Add your form here...
-        }
     </div>
 );
 
